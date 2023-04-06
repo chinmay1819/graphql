@@ -1,0 +1,2 @@
+# graphql
+to practice graphql
