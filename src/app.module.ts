@@ -5,6 +5,7 @@ import { LessonModule } from './lesson/lesson.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Lesson } from './lesson/lesson.entity';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -22,7 +23,8 @@ import { UserModule } from './user/user.module';
         Lesson
       ]
     }),
-    UserModule
+    UserModule,
+    AuthModule
     
   ]
 })
