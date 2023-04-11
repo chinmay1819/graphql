@@ -1,7 +1,8 @@
-import { Resolver,Query, Mutation, Args } from "@nestjs/graphql";
+import { Resolver,Query, Mutation, Args, Int } from "@nestjs/graphql";
 import { LessonType } from "./lesson.type";
 import { LessonService } from "./lesson.service";
 import { CreateLessonInput } from "./lesson.input";
+import { UpdateLessonInput } from "./lesson.update";
 
 
 @Resolver(of=>LessonType)
@@ -27,4 +28,19 @@ export class LessonResolver{
     ){
         return this.lessonService.createLesson(createLessonInput)
     }
+
+    @Mutation(returns=>String)
+    deleteLesson(
+        @Args('id') id:string
+    ):Promise<string>{
+        return this.lessonService.deleteLesson(id)
+    }
+
+    @Mutation(returns=>LessonType)
+    updateLesson(
+        @Args('updateLessonInput') updateLessonInput:UpdateLessonInput 
+    ){
+        return this.lessonService.updateLesson(updateLessonInput);
+    }
+
 }

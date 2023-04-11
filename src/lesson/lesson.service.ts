@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Lesson } from './lesson.entity';
-import { Any, Repository } from 'typeorm';
+import { Any, Repository, TreeRepositoryUtils } from 'typeorm';
 import {v4 as uuid} from 'uuid';
-import { ID } from '@nestjs/graphql';
 import { CreateLessonInput } from './lesson.input';
+import { UpdateLessonInput } from './lesson.update';
 
 @Injectable()
 export class LessonService {
@@ -32,5 +32,20 @@ export class LessonService {
         return this.lessonRepository.find();
         
     }
+  
+    async deleteLesson(id:string):Promise<string>{
+       const result= await this.lessonRepository.delete({id});
+        
+        return 'Deleted successfully...';
+    }
 
+    async updateLesson(updateLessonInput:UpdateLessonInput):Promise<Lesson>{
+        const {id,name,startDate,endDate}=updateLessonInput;
+        const lesson=await this.lessonRepository.findOneBy({id});
+        lesson.name=name;
+        lesson.startDate=startDate;
+        lesson.endDate=endDate;
+        await this.lessonRepository.save(lesson);
+        return lesson;
+    }
 }

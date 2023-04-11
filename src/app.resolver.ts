@@ -1,7 +1,7 @@
 import { UseGuards } from '@nestjs/common';
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AuthGuard } from './auth/auth.guard';
-
+import { UserService as userService } from './user/user.service';
 @Resolver(of => String)
 
 export class AppResolver {
@@ -21,4 +21,9 @@ export class AppResolver {
     ): string {
         return "User Authenticated Successfully !";
     }
+
+  
+
+
+    
 }

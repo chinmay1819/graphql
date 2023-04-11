@@ -14,4 +14,13 @@ export class UserService{
             return user;
         }
 
+        async createUser(email:string,password:string){
+            const user=this.userRepo.create({
+                email,
+                password
+            })
+    
+            return this.userRepo.save(user);
+        }
+        
 }

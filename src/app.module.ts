@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Lesson } from './lesson/lesson.entity';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { User } from './user/entity/user.entity';
 
 
 
@@ -20,11 +21,12 @@ import { AuthModule } from './auth/auth.module';
       synchronize:true,
       useUnifiedTopology:true,
       entities:[
-        Lesson
+        Lesson,
+        User
       ]
     }),
     UserModule,
-    AuthModule
+    AuthModule,
     
   ]
 })
