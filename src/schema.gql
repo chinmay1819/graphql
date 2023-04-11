@@ -2,6 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateLessonInput {
+  endDate: String!
+  name: String!
+  startDate: String!
+}
+
+type Lesson {
+  endDate: String!
+  id: ID!
+  name: String!
+  startDate: String!
+}
+
 type LoginResponse {
   access_token: String!
   user: User!
@@ -13,12 +26,24 @@ input LoginUserInput {
 }
 
 type Mutation {
+  createLesson(createLessonInput: CreateLessonInput!): Lesson!
+  deleteLesson(id: String!): String!
   login(loginUserInput: LoginUserInput!): LoginResponse!
+  updateLesson(updateLessonInput: UpdateLessonInput!): Lesson!
 }
 
 type Query {
+  lesson(id: String!): Lesson!
+  lessons: [Lesson!]!
   user(username: String!): User!
   users: [User!]!
+}
+
+input UpdateLessonInput {
+  endDate: String!
+  id: String!
+  name: String!
+  startDate: String!
 }
 
 type User {
