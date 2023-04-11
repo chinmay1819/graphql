@@ -7,13 +7,15 @@ import { Lesson } from './lesson/lesson.entity';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './user/entity/user.entity';
+import { join } from 'path';
 
 
 
 @Module({
   imports: [GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile:true
+      autoSchemaFile: join (process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
     }), LessonModule,
     TypeOrmModule.forRoot({
       type:'mongodb',

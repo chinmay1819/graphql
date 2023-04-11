@@ -1,0 +1,34 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateLessonInput {
+  endDate: String!
+  name: String!
+  startDate: String!
+}
+
+type Lesson {
+  endDate: String!
+  id: ID!
+  name: String!
+  startDate: String!
+}
+
+type Mutation {
+  createLesson(createLessonInput: CreateLessonInput!): Lesson!
+  deleteLesson(id: String!): String!
+  updateLesson(updateLessonInput: UpdateLessonInput!): Lesson!
+}
+
+type Query {
+  lesson(id: String!): Lesson!
+  lessons: [Lesson!]!
+}
+
+input UpdateLessonInput {
+  endDate: String!
+  id: String!
+  name: String!
+  startDate: String!
+}
