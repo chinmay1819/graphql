@@ -20,7 +20,7 @@ import { LessonModule } from './lesson/lesson.module';
     }),
     TypeOrmModule.forRoot({
       type:'mongodb',
-      url:'mongodb://localhost/school',
+      url:process.env.MONGODB_URL,
       synchronize:true,
       useUnifiedTopology:true,
       entities:[
